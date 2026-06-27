@@ -8,7 +8,7 @@ In Claude Code, add this repo as a marketplace, install the plugin, then reload:
 
 ```text
 /plugin marketplace add Njunge11/next-trpc-drizzle
-/plugin install next-trpc-drizzle@mita-labs-plugin-official
+/plugin install next-trpc-drizzle@mita-labs-plugins-official
 /reload-plugins
 ```
 
