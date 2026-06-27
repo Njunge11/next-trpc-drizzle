@@ -1,34 +1,39 @@
 # next-trpc-drizzle
 
-A Claude Code plugin: an engineering playbook (as auto-discovered skills) for the **Next.js + tRPC + Drizzle** stack — the T3-style stack, extended with TanStack Query, shadcn/ui + Tailwind, Vitest, and Turborepo.
-
-The skills steer a coding agent toward fast, correct, test-first feature work: a two-phase TDD pipeline plus standards for the backend, frontend, data fetching, testing, and CI.
-
-## Skills
-
-| Skill | Use when |
-| --- | --- |
-| `backend-checklist` | Turn an agreed backend design into the `## Backend` test-case checklist (Phase 1 input). |
-| `build-backend-feature` | Build a feature's backend end-to-end, test-first (Phase 1). Drives the living checklist until the backend suite is green. Pairs with `/goal`. |
-| `frontend-checklist` | Turn an agreed UI into the `## Frontend + Integration` checklist — test-backed behavior vs browser-checked visual (Phase 2 input). |
-| `build-frontend-feature` | Build the frontend + integration after the backend is done (Phase 2), test-first from a described UI. Pairs with `/goal`. |
-| `tdd` | The Canon TDD loop — test list → one test → make it pass → refactor. |
-| `backend-standards` | Layered architecture (tRPC router → service → repo → Drizzle), query/perf, transactions, error handling. |
-| `frontend-standards` | shadcn/ui-first, semantic design tokens (no hardcoded values), mobile-first responsive incl. tablet. |
-| `data-fetching` | tRPC + TanStack Query v5 + Next App Router: prefetch/hydrate, `useSuspenseQuery(ies)`, caching, optimistic updates, `loading.tsx`/`error.tsx`. |
-| `testing` | Vitest projects, PGlite repo tests, MSW vs cache-seeding, behavior-not-implementation. |
-| `ci` | Turborepo `--affected` test runs. |
-
-Once installed, Claude loads each skill automatically when your task matches its description, or you can invoke it explicitly as `/next-trpc-drizzle:<skill>` (e.g. `/next-trpc-drizzle:data-fetching`).
+A Claude Code plugin: a test-first engineering playbook for the **Next.js + tRPC + Drizzle** stack (the T3-style stack, plus TanStack Query, shadcn/ui + Tailwind, Vitest, and Turborepo). It ships **10 skills** that steer a coding agent through a two-phase TDD feature pipeline and the standards for backend, frontend, data fetching, testing, and CI.
 
 ## Install
+
+In Claude Code, add this repo as a marketplace, install the plugin, then reload:
 
 ```text
 /plugin marketplace add Njunge11/next-trpc-drizzle
 /plugin install next-trpc-drizzle@next-trpc-drizzle
+/reload-plugins
 ```
 
-(Replace `Njunge11/next-trpc-drizzle` with the GitHub repo path once pushed. To try it locally before publishing: `/plugin marketplace add /path/to/next-trpc-drizzle`.)
+Needs a recent Claude Code (the `/plugin` command). To try it locally without installing, run `claude --plugin-dir ./plugins/next-trpc-drizzle`.
+
+## Use
+
+Once installed, each skill loads **automatically** when your task matches its description. You can also invoke any skill explicitly by its namespaced name:
+
+```text
+/next-trpc-drizzle:<skill>      # e.g. /next-trpc-drizzle:data-fetching
+```
+
+| Skill | Use when |
+| --- | --- |
+| `backend-checklist` | You've agreed a backend design and want it turned into the `## Backend` test-case checklist (Phase 1 input). |
+| `build-backend-feature` | Building a feature's backend end-to-end, test-first (Phase 1) — drives the checklist to a green backend suite. |
+| `frontend-checklist` | You've agreed a UI and want the `## Frontend + Integration` checklist — test-backed behavior vs browser-checked visual (Phase 2 input). |
+| `build-frontend-feature` | Building the frontend + integration after the backend is done (Phase 2), test-first from a described UI. |
+| `tdd` | Running the Canon TDD loop — test list → one test → make it pass → refactor. |
+| `backend-standards` | Writing or reviewing backend code — layered tRPC → service → repository → Drizzle, queries, transactions, errors. |
+| `frontend-standards` | Building or reviewing UI — shadcn/ui composition, semantic tokens, mobile-first responsive incl. tablet. |
+| `data-fetching` | tRPC + TanStack Query v5 + Next App Router — prefetch/hydrate, `useSuspenseQuery`, caching, optimistic updates, `loading.tsx`/`error.tsx`. |
+| `testing` | Configuring or writing tests — Vitest projects, PGlite repo tests, MSW vs cache-seeding, behavior-not-implementation. |
+| `ci` | Setting up CI for a Turborepo monorepo — graph-aware `turbo run --affected`. |
 
 ## Workflow
 
