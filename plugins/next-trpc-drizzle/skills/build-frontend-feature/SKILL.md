@@ -20,7 +20,4 @@ References: frontend-checklist · tdd · frontend-standards · data-fetching · 
 
 ## Rules
 
-- shadcn-first; semantic tokens only (no hardcoded values); mobile-first with an explicit `md:` (tablet) state.
-- Behavior tests assert what the user sees/does, never component internals; mock only the network edge or seed the cache.
-- **Visual/responsive correctness is a browser check, not a jsdom test** — don't write a Vitest test that pretends to assert layout.
 - Hit a real backend/contract bug while integrating? Fix it — add or amend the backend tests alongside the change so the whole suite stays green.
