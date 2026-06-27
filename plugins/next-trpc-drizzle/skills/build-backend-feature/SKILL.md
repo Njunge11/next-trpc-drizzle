@@ -20,6 +20,4 @@ References: backend-checklist · tdd · backend-standards · testing · data-fet
 
 ## Rules
 
-- One test at a time; expected values come from the spec/checklist, never pasted from implementation output.
-- One hat: make it pass, then refactor.
 - **Stop at the backend.** The frontend is a separate phase and your review gate — don't roll into it.
