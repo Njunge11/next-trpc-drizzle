@@ -81,11 +81,27 @@ Errors bubble up: Repository → Service → Router → global handler. The glob
 - Generate migrations with Drizzle tooling (`db:generate`); never hand-write a migration file.
 - Never edit an applied migration — add a new one for every schema change.
 
-## Reuse
+## Types & reuse
+
+**Single source of truth.** Each piece of information has one authoritative home; derive everything else from it, never restate it. The homes: DB types → Drizzle schema · API contract → tRPC procedures · validation → Zod · business logic → one reusable function.
+
+**Derive types, never re-declare them.**
+
+- DB types from the Drizzle schema — `typeof users.$inferSelect` / `$inferInsert` (or `InferSelectModel`). Never hand-write a row type.
+- API payload types from the router — `inferRouterOutputs<AppRouter>` / `inferRouterInputs`. Never declare a parallel `interface` for a request/response.
+
+```ts
+export type User = typeof users.$inferSelect;            // not: type User = { id: string; … }
+type GetUser = inferRouterOutputs<AppRouter>["user"]["get"];
+```
+
+**Reuse.**
 
 - Reuse existing code only if it already follows these standards; otherwise refactor it, don't copy it.
+- Extract shared logic once it's genuinely repeated (rule of thumb: the third copy) — not preemptively.
 - Never duplicate business logic, queries, validation, or utilities.
-- Extract shared logic once duplication is real — not preemptively.
+
+Before writing code, ask: can this type be inferred instead of declared? Does it already exist? Am I adding a second source of truth?
 
 ## Review checklist
 
@@ -103,3 +119,4 @@ Reject the change if any is true:
 - [ ] A migration file was hand-written or an applied one edited.
 - [ ] Repeated `try/catch`, or an error is swallowed instead of propagated.
 - [ ] Duplicated business logic, query, or validation.
+- [ ] A type is hand-declared where Drizzle/tRPC inference exists, or a parallel `interface` duplicates an API payload.
