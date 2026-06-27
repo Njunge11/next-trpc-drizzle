@@ -1,4 +1,4 @@
-# Admin Portal — UI Testing
+# UI Testing — what to assert
 
 > A test should fail because the **user-visible behavior** is wrong, not because you refactored the code.
 
@@ -40,7 +40,7 @@ expect(await screen.findByText("Last 30 days")).toBeVisible()
 ```ts
 await user.type(screen.getByRole("searchbox"), "acme")
 expect(screen.getByText("Acme Ltd")).toBeVisible()
-expect(screen.queryByText("Globex")).not.toBeInTheDocument()
+expect(screen.queryByText("Other Co")).not.toBeInTheDocument()
 ```
 
 **Modal / dialog** — assert the dialog, not `setOpen`.

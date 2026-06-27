@@ -1,6 +1,6 @@
 ---
 name: testing
-description: Use when configuring or writing tests — Vitest projects (node and jsdom), PGlite for repo tests, fake repo for services, createCaller for routers, MSW vs cache-seeding for UI, and the behavior-not-implementation rule for what to assert.
+description: Use when configuring or writing tests — Vitest projects, PGlite for repos, fake repos for services, createCaller for routers, MSW vs cache-seed for UI.
 ---
 
 # Test Setup

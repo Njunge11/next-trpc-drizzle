@@ -1,6 +1,6 @@
 ---
 name: backend-standards
-description: Use when writing or reviewing backend code — the layered architecture (tRPC router, service, repository, Drizzle), query and performance rules, transactions, error handling, and a review checklist.
+description: Layered backend architecture — tRPC router → service → repository → Drizzle. Use when writing or reviewing backend code: routers, services, repositories, queries, transactions, or migrations.
 ---
 
 # Backend Standards
@@ -11,7 +11,6 @@ Rules for backend code (the `api/` and `db/` slices of a feature). Each rule has
 
 - Follow the layered architecture; never bypass a layer.
 - One responsibility per layer.
-- Correctness over cleverness; simplicity over unnecessary abstraction.
 - Use framework / ORM (tRPC, Drizzle) primitives before writing custom code.
 - Minimize database round trips.
 

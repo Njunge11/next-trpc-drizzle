@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Use when implementing a feature test-first or writing tests — the Canon TDD loop (test list, one test, make it pass, refactor) and the backend-first build order. Vitest stack.
+description: Canon TDD loop — test list → one test → pass → refactor. Use when implementing a feature test-first, writing tests, or deciding build order. Vitest stack.
 ---
 
 # TDD Workflow

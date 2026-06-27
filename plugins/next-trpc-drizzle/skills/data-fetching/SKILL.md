@@ -1,6 +1,6 @@
 ---
 name: data-fetching
-description: Use when writing or reviewing data-fetching and performance code — tRPC + TanStack Query v5 + Next.js App Router. Server prefetch and HydrateClient, useSuspenseQuery and useSuspenseQueries, caching and staleTime, optimistic updates, loading.tsx and error.tsx, no-waterfalls.
+description: Use when writing or reviewing data-fetching or perf code — tRPC + TanStack Query v5 + Next.js App Router. Server prefetch/HydrateClient, useSuspenseQuery, caching, optimistic updates, loading/error UI, no waterfalls.
 ---
 
 # Data Fetching & Performance
@@ -18,54 +18,9 @@ Server Component: prefetch(queryOptions)  ──(stream)──▶  HydrateClient
 
 This is "render as you fetch": the server starts the fetch and returns HTML immediately (good TTFB), data streams in as it resolves. A spinner that never resolves, or a *second* skeleton on top of the route skeleton, means the pattern was broken — see [Loading UI](#loading-ui).
 
-## Wiring (the modern tRPC integration)
+## Wiring
 
-Use `@trpc/tanstack-react-query` (`createTRPCOptionsProxy` + `useTRPC`), **not** the legacy `createHydrationHelpers`.
-
-**`lib/trpc/query-client.ts`** — one factory, used both sides:
-
-```ts
-import { defaultShouldDehydrateQuery, QueryClient } from "@tanstack/react-query";
-
-export function makeQueryClient() {
-  return new QueryClient({
-    defaultOptions: {
-      queries: { staleTime: 60 * 1000 }, // non-zero → don't refetch right after SSR hydration
-      dehydrate: {
-        // include in-flight queries so streaming works
-        shouldDehydrateQuery: (q) =>
-          defaultShouldDehydrateQuery(q) || q.state.status === "pending",
-        // don't redact server errors — Next.js uses them to detect dynamic pages
-        shouldRedactErrors: () => false,
-      },
-    },
-  });
-}
-```
-
-**`lib/trpc/server.tsx`** — server caller, `prefetch`, `HydrateClient`:
-
-```ts
-import "server-only";
-import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
-import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { cache } from "react";
-
-export const getQueryClient = cache(makeQueryClient); // new-per-request on server
-export const trpc = createTRPCOptionsProxy({ ctx: createTRPCContext, router: appRouter, queryClient: getQueryClient });
-
-export function HydrateClient({ children }: { children: React.ReactNode }) {
-  return <HydrationBoundary state={dehydrate(getQueryClient())}>{children}</HydrationBoundary>;
-}
-export function prefetch(queryOptions) {
-  const qc = getQueryClient();
-  queryOptions.queryKey[1]?.type === "infinite"
-    ? void qc.prefetchInfiniteQuery(queryOptions)
-    : void qc.prefetchQuery(queryOptions);
-}
-```
-
-**`lib/trpc/react.tsx`** — browser provider. The QueryClient is a **module-level singleton in the browser**, **new-per-request on the server** (never share one across requests). Exposes `useTRPC()`.
+The `prefetch` / `HydrateClient` / `useTRPC` setup (`@trpc/tanstack-react-query`, **not** the legacy `createHydrationHelpers`) is a **one-time per-app** install — `lib/trpc/{query-client,server,react}.tsx`. Full boilerplate in [`wiring.md`](wiring.md). Everything below assumes it's in place.
 
 ## Prefetching
 

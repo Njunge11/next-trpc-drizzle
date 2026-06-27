@@ -1,6 +1,6 @@
 ---
 name: ci
-description: Use when configuring CI or GitHub Actions or deciding how tests run across a Turborepo monorepo — turbo run test --affected (changed packages plus dependents), fetch-depth 0, and PR vs merge run shapes.
+description: Use when configuring CI/GitHub Actions for a Turborepo monorepo — graph-aware `turbo run --affected` (changed packages plus dependents), fetch-depth 0, and PR vs merge run shapes.
 ---
 
 # CI (Turborepo monorepo)
