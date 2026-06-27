@@ -1,6 +1,6 @@
 # next-trpc-drizzle
 
-A Claude Code plugin: a test-first engineering playbook for the **Next.js + tRPC + Drizzle** stack (the T3-style stack, plus TanStack Query, shadcn/ui + Tailwind, Vitest, and Turborepo). It ships **10 skills** that steer a coding agent through a two-phase TDD feature pipeline and the standards for backend, frontend, data fetching, testing, and CI.
+A Claude Code plugin: a test-first engineering playbook for the **Next.js + tRPC + Drizzle** stack (the T3-style stack, plus TanStack Query, shadcn/ui + Tailwind, and Vitest). It ships **9 skills** that steer a coding agent through a two-phase TDD feature pipeline and the standards for backend, frontend, data fetching, and testing.
 
 ## Install
 
@@ -33,7 +33,6 @@ Once installed, each skill loads **automatically** when your task matches its de
 | `frontend-standards` | Building or reviewing UI — shadcn/ui composition, semantic tokens, mobile-first responsive incl. tablet. |
 | `data-fetching` | tRPC + TanStack Query v5 + Next App Router — prefetch/hydrate, `useSuspenseQuery`, caching, optimistic updates, `loading.tsx`/`error.tsx`. |
 | `testing` | Configuring or writing tests — Vitest projects, PGlite repo tests, MSW vs cache-seeding, behavior-not-implementation. |
-| `ci` | Setting up CI for a Turborepo monorepo — graph-aware `turbo run --affected`. |
 
 ## Workflow
 
