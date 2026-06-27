@@ -1,7 +1,6 @@
 {
   "name": "next-trpc-drizzle",
   "displayName": "Next + tRPC + Drizzle stack",
-  "version": "0.1.0",
   "description": "Engineering skills for the Next.js + tRPC + Drizzle (T3-style) stack: a TDD feature pipeline plus backend, frontend, data-fetching, and testing standards.",
   "author": {
     "name": "Njunge11",
