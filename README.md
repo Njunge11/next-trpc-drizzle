@@ -43,30 +43,27 @@ A **two-phase, test-first pipeline**. Each phase follows the same shape — *agr
 
 1. **Discuss** the feature's data, mutations, and architecture in chat.
 2. **Author the checklist** — invoke `backend-checklist`. It turns the agreed design into the `## Backend` section of `features/<name>/checklist.md` (one observable behavior per line). Review and amend it — this checklist is the definition of done.
-3. **Build** — drive the phase autonomously with `/goal` (see below):
+3. **Build** — drive the phase autonomously with `/goal`:
 
    ```
-   /goal implement features/<name>/checklist.md using build-backend-feature —
-   every "## Backend" item checked [x] and `vitest --project backend` green,
-   paste the run as proof. Stop after 25 turns.
+   /goal implement features/<name>/checklist.md using build-backend-feature
    ```
 
-   `build-backend-feature` runs the TDD loop (`tdd`, `backend-standards`, `testing`) until the suite is green.
+   The prompt stays short because the skill carries the finish line: `build-backend-feature` runs the TDD loop (`tdd`, `backend-standards`, `testing`), and on completion surfaces the checklist (all items `[x]`) plus the green `vitest --project backend` run for `/goal` to verify.
 4. **Review the backend** before moving on — it's a deliberate gate, not an automatic roll into the UI.
 
 ### Phase 2 — Frontend + integration
 
 5. **Describe the UI**, then invoke `frontend-checklist` to author the `## Frontend + Integration` section — **Behavior** (test-backed) vs **Visual & responsive** (browser-checked). Review and amend.
-6. **Build** with `/goal` + `build-frontend-feature` — behavior items only, since the judge can't see layout:
+6. **Build** with `/goal` + `build-frontend-feature` (behavior items only — the judge can't see layout):
 
    ```
-   /goal implement features/<name>/checklist.md using build-frontend-feature —
-   every BEHAVIOR item checked [x] and `vitest` green, paste the run. Stop after 30 turns.
+   /goal implement features/<name>/checklist.md using build-frontend-feature
    ```
 
 7. **Do the visual/responsive pass yourself** in the browser at ~375 / ~768 / ~1280px.
 
-> **About `/goal`:** a Claude Code harness command (v2.1.139+) **you** run to keep the agent working autonomously until a condition holds — it loops after each turn until satisfied or you `/goal clear`. Its evaluator only reads the session transcript; it can't open files or run commands, so the condition must be something the agent **proves in its output**. That's why the build skills surface the checklist state and paste the test run.
+> **About `/goal`:** a Claude Code harness command (v2.1.139+) **you** run to keep the agent working autonomously until a condition holds — it loops after each turn until satisfied or you `/goal clear`. Its evaluator only reads the session transcript; it can't open files or run commands, so the condition must be something the agent **proves in its output**. The build skills handle that for you — they surface the checklist state and paste the test run — which is why the prompt can stay this short. Append a cap like `… or stop after 25 turns` if you want a hard turn limit.
 
 ## License
 
