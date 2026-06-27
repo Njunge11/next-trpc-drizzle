@@ -1,11 +1,11 @@
 ---
 name: tdd
-description: Canon TDD loop — test list → one test → pass → refactor. Use when implementing a feature test-first, writing tests, or deciding build order. Vitest stack.
+description: TDD loop — test list → one test → pass → refactor. Use when implementing a feature test-first, writing tests, or deciding build order. Vitest stack.
 ---
 
 # TDD Workflow
 
-How we build every feature. Test-first, one test at a time (Kent Beck's Canon TDD). What to *assert* lives in the testing skill; this is the *loop*.
+How we build every feature. Test-first, one test at a time. What to *assert* lives in the testing skill; this is the *loop*.
 
 ## The loop
 

@@ -5,7 +5,7 @@ description: Use after agreeing a feature's backend design to turn it into the `
 
 # Backend Checklist
 
-Turn the agreed backend design — settled **in this conversation** — into the `## Backend` section of `features/<name>/checklist.md`. That section is a **Canon TDD test list** (see tdd): the behaviors you'll drive out one test at a time in build-backend-feature. **Authoring only: no code, no tests.**
+Turn the agreed backend design — settled **in this conversation** — into the `## Backend` section of `features/<name>/checklist.md`. That section is a **TDD test list** (see tdd): the behaviors you'll drive out one test at a time in build-backend-feature. **Authoring only: no code, no tests.**
 
 ## Input
 

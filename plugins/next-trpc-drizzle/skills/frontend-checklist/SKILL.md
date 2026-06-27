@@ -5,7 +5,7 @@ description: Use after agreeing a feature's UI to turn it into the `## Frontend 
 
 # Frontend Checklist
 
-Turn the agreed UI — the described screens **in this conversation** plus the feature's already-built backend contract — into the `## Frontend + Integration` section of `features/<name>/checklist.md`. The Behavior items there are a **Canon TDD test list** (see tdd); the Visual items are a browser-check list. **Authoring only: no components, no tests.**
+Turn the agreed UI — the described screens **in this conversation** plus the feature's already-built backend contract — into the `## Frontend + Integration` section of `features/<name>/checklist.md`. The Behavior items there are a **TDD test list** (see tdd); the Visual items are a browser-check list. **Authoring only: no components, no tests.**
 
 ## Input
 

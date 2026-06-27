@@ -134,7 +134,7 @@ msw  msw-trpc
 
 - [Vitest — Test Projects](https://vitest.dev/guide/projects) (workspace deprecated in 3.2)
 - [TanStack Query — Testing](https://tanstack.com/query/v5/docs/framework/react/guides/testing) (test QueryClient, `retry: false`)
-- [TkDodo — Testing React Query (MSW approach)](https://tkdodo.eu/blog/testing-react-query)
+- [Testing React Query (the MSW approach)](https://tkdodo.eu/blog/testing-react-query)
 - [msw-trpc](https://www.npmjs.com/package/msw-trpc) — typed tRPC handlers for MSW (v2.0.1, peers tRPC v11 + msw v2)
 - [Drizzle — PGlite](https://orm.drizzle.team/docs/connect-pglite) & [PGlite](https://pglite.dev/) — in-process Postgres for repo tests
 - [Fun & Sane Node TDD: Postgres with PGlite, Drizzle & Vitest](https://nikolamilovic.com/posts/fun-sane-node-tdd-postgres-pglite-drizzle-vitest/) — push-not-migrate + snapshotting
