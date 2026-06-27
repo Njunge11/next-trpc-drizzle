@@ -11,7 +11,7 @@ Turn the UI agreed **in this conversation** (plus the feature's real API surface
 
 - Read the described UI and the real backend contract from context; if a screen or state is undecided, **ask**. Preserve described copy verbatim.
 - Split the section into two groups — the split is the point:
-  - **Behavior (test-backed)** — `F<n>`: what the user observes/does, loading/error, the integrated data path. Each becomes a UI test (what to assert: testing).
+  - **Behavior (test-backed)** — `F<n>`: what the user observes/does, loading/error, the integrated data path. It's a TDD test list (tdd) — cover edge cases and error/empty states too, not just the happy path; assert per testing.
   - **Visual & responsive (browser-checked, not tests)** — `V<n>`: layout, spacing, tokens, the `md:` tablet state (built per frontend-standards). jsdom has no layout engine — **never write a Vitest test for these.**
 
   ```md

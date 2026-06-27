@@ -20,5 +20,6 @@ Turn the backend design agreed **in this conversation** into the `## Backend` se
   - [ ] B2 wrong password is rejected
   ```
 
+- Cover the whole behavior space, not just the happy path — include edge cases, error/failure paths, and authz outcomes (per tdd).
 - Write only the title and `## Backend`. The frontend section is frontend-checklist's job, in Phase 2.
 - **Stop at authoring.** Present it for review; don't build — that's build-backend-feature.
