@@ -1,6 +1,6 @@
 ---
 name: backend-standards
-description: Layered backend architecture — tRPC router → service → repository → Drizzle. Use when writing or reviewing backend code: routers, services, repositories, queries, transactions, or migrations.
+description: Layered backend architecture — tRPC router → service → repository → Drizzle. Use when writing or reviewing backend code — routers, services, repositories, queries, transactions, or migrations.
 ---
 
 # Backend Standards
